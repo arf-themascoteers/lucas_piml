@@ -16,6 +16,7 @@ class AlgorithmRunner:
                         validation_x,
                         validation_y,
                         algorithm,
+                        alpha,
                         X_columns,
                         y_column
                         ):
@@ -23,9 +24,9 @@ class AlgorithmRunner:
         print(f"Train: {len(train_y)}, Test: {len(test_y)}, Validation: {len(validation_y)}")
         if algorithm.startswith("ann_"):
             if constants.LIGHTNING:
-                ann = ANNLightning(algorithm, train_x, train_y, test_x, test_y, validation_x, validation_y, X_columns, y_column)
+                ann = ANNLightning(algorithm, alpha, train_x, train_y, test_x, test_y, validation_x, validation_y, X_columns, y_column)
             else:
-                ann = ANNVanilla(algorithm, train_x, train_y, test_x, test_y, validation_x, validation_y, X_columns, y_column)
+                ann = ANNVanilla(algorithm, alpha, train_x, train_y, test_x, test_y, validation_x, validation_y, X_columns, y_column)
             ann.train()
             y_hats = ann.test()
             # if algorithm == "ann_savi":

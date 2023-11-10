@@ -10,7 +10,7 @@ import logging
 
 
 class ANNLightning:
-    def __init__(self, algorithm, train_x, train_y, test_x, test_y, validation_x, validation_y, X_columns, y_column):
+    def __init__(self, algorithm, alpha, train_x, train_y, test_x, test_y, validation_x, validation_y, X_columns, y_column):
         self.algorithm = algorithm
         self.ann_model = None
         self.X_columns = X_columns
@@ -18,7 +18,7 @@ class ANNLightning:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         input_size = validation_x.shape[1]
         ann_class = ann_utils.get_ann_by_name(algorithm)
-        self.ann_model = ann_class(device, input_size, X_columns, y_column)
+        self.ann_model = ann_class(device, input_size, X_columns, y_column, alpha)
         self.model = LightningMachine(model=self.ann_model)
         self.train_dataset = SpectralDataset(train_x, train_y)
         self.test_dataset = SpectralDataset(test_x, test_y)
