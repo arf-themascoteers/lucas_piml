@@ -21,6 +21,7 @@ class ANNVanilla:
         self.validation_dataset = SpectralDataset(validation_x, validation_y)
         self.epochs = 400
         self.batch_size = 1000
+        print(alpha)
 
     def train(self):
         self.model.train()
@@ -42,8 +43,8 @@ class ANNVanilla:
                 #print(f'Epoch:{epoch + 1} (of {self.epochs}), Batch: {batch_number} of {n_batches}, Loss:{loss.item():.6f}')
 
         #torch.save(self.model, "ann.pt")]
-        if hasattr(self.model, "L"):
-            print(self.model.L)
+        # if hasattr(self.model, "L"):
+        #     print(self.model.L)
 
 
     def test(self):

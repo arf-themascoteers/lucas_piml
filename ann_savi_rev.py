@@ -25,8 +25,8 @@ class ANNSAVIRev(nn.Module):
         )
 
         self.alpha = alpha
-        self.criterion_soc = torch.nn.MSELoss(reduction='sum')
-        self.criterion_savi = torch.nn.MSELoss(reduction='sum')
+        self.criterion_soc = torch.nn.MSELoss(reduction='mean')
+        self.criterion_savi = torch.nn.MSELoss(reduction='mean')
 
     def forward(self, x, soc):
         base_x = x[:,0:-1]
@@ -38,7 +38,7 @@ class ANNSAVIRev(nn.Module):
         soc_hat = soc_hat.reshape(-1)
         savi_hat = savi_hat.reshape(-1)
 
-        loss_soc = self.criterion_soc(soc_hat, soc)
+        loss_soc = 10 * self.criterion_soc(soc_hat, soc)
         loss_savi = self.criterion_savi(savi_hat, savi_x)
         loss = loss_soc * (1-self.alpha) + loss_savi * self.alpha
 
