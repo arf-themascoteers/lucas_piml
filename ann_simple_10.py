@@ -15,7 +15,7 @@ class ANNSimple10(nn.Module):
             nn.LeakyReLU(),
             nn.Linear(30, 1)
         )
-        self.criterion_soc = torch.nn.MSELoss(reduction='mean')
+        self.criterion_soc = torch.nn.MSELoss(reduction='sum')
 
     def forward(self, x, soc):
         soc_hat = self.input_to_soc(x)

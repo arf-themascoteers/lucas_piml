@@ -7,7 +7,7 @@ class LightningMachine(LightningModule):
     def __init__(self, model=None):
         super().__init__()
         self.model = model
-        self.criterion = torch.nn.MSELoss(reduction='mean')
+        self.criterion = torch.nn.MSELoss(reduction='sum')
 
     def training_step(self, batch, batch_idx):
         x, y = batch

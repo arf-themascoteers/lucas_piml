@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 
-class ANNSimple(nn.Module):
+class ANNSimple100Sum(nn.Module):
     def __init__(self, device, input_size, X_columns, y_column, alpha=0.5):
         super().__init__()
         self.device = device
@@ -20,5 +20,5 @@ class ANNSimple(nn.Module):
     def forward(self, x, soc):
         soc_hat = self.input_to_soc(x)
         soc_hat = soc_hat.reshape(-1)
-        loss_soc = self.criterion_soc(soc_hat, soc)
+        loss_soc = 100 * self.criterion_soc(soc_hat, soc)
         return soc_hat, soc_hat, loss_soc

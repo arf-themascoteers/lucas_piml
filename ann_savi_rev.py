@@ -25,8 +25,8 @@ class ANNSAVIRev(nn.Module):
         )
 
         self.alpha = alpha
-        self.criterion_soc = torch.nn.MSELoss(reduction='mean')
-        self.criterion_savi = torch.nn.MSELoss(reduction='mean')
+        self.criterion_soc = torch.nn.MSELoss(reduction='sum')
+        self.criterion_savi = torch.nn.MSELoss(reduction='sum')
 
     def forward(self, x, soc):
         base_x = x[:,0:-1]
