@@ -11,7 +11,7 @@ class ANNSimple(nn.Module):
         self.y_column = y_column
 
         self.input_to_soc = nn.Sequential(
-            nn.Linear(input_size-1, 30),
+            nn.Linear(input_size, 30),
             nn.LeakyReLU(),
             nn.Linear(30, 1)
         )
