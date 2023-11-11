@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 
-class ANNSimple(nn.Module):
+class ANNSimple10(nn.Module):
     def __init__(self, device, input_size, X_columns, y_column, alpha=0.5):
         super().__init__()
         self.device = device
