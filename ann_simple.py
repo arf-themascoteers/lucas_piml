@@ -10,10 +10,10 @@ class ANNSimple(nn.Module):
         self.X_columns = X_columns
         self.y_column = y_column
 
-        self.inputsoc_to_savi = nn.Sequential(
-            nn.Linear(1, 10),
+        self.input_to_soc = nn.Sequential(
+            nn.Linear(input_size-1, 30),
             nn.LeakyReLU(),
-            nn.Linear(10, 1)
+            nn.Linear(30, 1)
         )
         self.criterion_soc = torch.nn.MSELoss(reduction='mean')
 
