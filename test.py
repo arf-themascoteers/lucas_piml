@@ -7,5 +7,5 @@ if __name__ == "__main__":
     ]
     algorithms = ["ann_savi_rev" for i in range(11)]
     alphas = [i/10 for i in range(11)]
-    c = Evaluator(prefix="test2", folds=10, algorithms=algorithms, column_groups=column_groups, alphas=alphas)
+    c = Evaluator(prefix="test", folds=10, algorithms=algorithms, column_groups=column_groups, alphas=alphas)
     c.process()
